@@ -24,7 +24,7 @@ public class Curso extends Conteudo {
                 "cargaHoraria=" + cargaHoraria +
                 ", titulo='" + getTitulo() + '\'' +
                 ", descricao='" + getDescricao() + '\'' +
-                '}';
+                "}\n";
     }
 
     @Override
