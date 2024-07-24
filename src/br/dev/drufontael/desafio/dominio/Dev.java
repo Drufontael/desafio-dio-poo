@@ -8,6 +8,10 @@ public class Dev {
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
+    public Dev(String nome) {
+        this.nome = nome;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -69,5 +73,21 @@ public class Dev {
 
     public void progredir() {
 
+        Optional<Conteudo> conteudo = this.conteudosInscritos.stream().findFirst();
+        if (conteudo.isPresent()) {
+            this.conteudosConcluidos.add(conteudo.get());
+            this.conteudosInscritos.remove(conteudo.get());
+        }else {
+            System.err.println("Você não esta matriculado em nenhum conteudo!");
+        }
+
+    }
+
+    public void progredir(Conteudo conteudo) {
+        if(this.conteudosInscritos.remove(conteudo)) {
+            this.conteudosConcluidos.add(conteudo);
+        }else {
+            System.err.println("Você não esta matriculado nesse conteudo!");
+        }
     }
 }
